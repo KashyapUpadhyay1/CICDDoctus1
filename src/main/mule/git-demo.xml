@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="bf615283-62ec-4902-84f3-69a8101d4d22" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="git-demoFlow" doc:id="d8180ff6-70af-44db-b033-8033d0b7d222" >
+		<http:listener doc:name="Listener" doc:id="b71a5dfd-e3ed-4e45-997e-535e0f119b64" config-ref="HTTP_Listener_config" path="/gittest"/>
+		<logger level="INFO" doc:name="Logger" doc:id="aa513a2e-1729-4697-9567-b917b3560a4e" message="before payload"/>
+		<set-payload value="test payload" doc:name="Set Payload" doc:id="641c0bff-6fcc-4b68-91cf-41cdafd4614d" />
+		<logger level="INFO" doc:name="Logger" doc:id="9b19c0a1-ce50-48d8-94bd-9f839c11f8e5" message="after set payload"/>
+	</flow>
+</mule>
